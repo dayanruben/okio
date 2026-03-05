@@ -124,7 +124,6 @@ jobs:
           path: '**/build/reports'
 
   publish:
-    if: github.repository == 'square/okio'
     runs-on: macos-15
     if: github.repository == 'square/okio' && github.ref == 'refs/heads/master'
     needs: [jvm, all-platforms, emulator]
@@ -148,7 +147,6 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.GPG_SECRET_PASSPHRASE }}
 
   publish-website:
-    if: github.repository == 'square/okio'
     runs-on: ubuntu-latest
     if: github.repository == 'square/okio' && github.ref == 'refs/heads/master'
     needs: [jvm, all-platforms, emulator]
