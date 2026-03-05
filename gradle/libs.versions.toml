@@ -1,5 +1,5 @@
 [versions]
-burst = "2.10.2"
+burst = "2.12.0-beta2"
 jmh = "1.37"
 kotlin = "2.3.20-RC2"
 # Set to lower version than KGP version to maximize compatibility
