@@ -5,6 +5,15 @@ Change Log
 
  * None yet.
 
+## Version 3.18.1
+
+_2026-07-28_
+
+ * Fix: Restore binary-compatibility with Okio 3.17.x for Kotlin/Native users. When we introduced
+   the new `base64()` function, we inadvertently changed the binary signature! Ugh! This is now
+   fixed and we've automated binary-compatibility checking for Kotlin/Native going forward.
+
+
 ## Version 3.18.0
 
 _2026-07-21_

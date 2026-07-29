@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Square, Inc.
+ * Copyright (c) 2026 Okio Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package okio.internal
 
-internal expect class CRC32() {
-  fun update(content: ByteArray, offset: Int, byteCount: Int)
-  fun update(content: ByteArray)
-  fun getValue(): Long
-  fun reset()
+import kotlinx.validation.ApiValidationExtension
+import kotlinx.validation.BinaryCompatibilityValidatorPlugin
+import org.gradle.api.Project
+import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.withType
+
+fun Project.configureBinaryCompatibilityValidator() {
+  plugins.withType<BinaryCompatibilityValidatorPlugin> {
+    extensions.configure<ApiValidationExtension> {
+      klib {
+        enabled = kmpNativeEnabled && kmpWasmEnabled
+      }
+    }
+  }
 }
