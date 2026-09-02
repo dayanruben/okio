@@ -48,9 +48,12 @@ internal constructor(
 
   internal fun finishDeflate()
 
+  @Throws(IOException::class)
   override fun write(source: Buffer, byteCount: Long)
+  @Throws(IOException::class)
   override fun flush()
   override fun timeout(): Timeout
+  @Throws(IOException::class)
   override fun close()
 }
 
