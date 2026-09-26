@@ -82,6 +82,7 @@ actual class Path internal actual constructor(
   actual fun resolve(child: Path, normalize: Boolean): Path =
     commonResolve(child = child, normalize = normalize)
 
+  @Throws(IllegalArgumentException::class)
   actual fun relativeTo(other: Path): Path = commonRelativeTo(other)
 
   actual fun normalized(): Path = commonNormalized()
