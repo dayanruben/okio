@@ -134,6 +134,13 @@ subprojects {
   configure<SpotlessExtension> {
     kotlin {
       target("**/*.kt")
+      if (project.path == ":okio") {
+        // Kotlin EAP currently crashes ktlint on these zlib expect declarations.
+        targetExclude(
+          "src/zlibMain/kotlin/okio/DeflaterSink.kt",
+          "src/zlibMain/kotlin/okio/InflaterSource.kt",
+        )
+      }
       ktlint(libs.versions.ktlint.get())
     }
   }

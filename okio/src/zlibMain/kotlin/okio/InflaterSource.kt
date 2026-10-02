@@ -34,8 +34,10 @@ internal constructor(
 ) : Source {
   constructor(source: Source, inflater: Inflater)
 
+  @Throws(IOException::class)
   override fun read(sink: Buffer, byteCount: Long): Long
   override fun timeout(): Timeout
+  @Throws(IOException::class)
   override fun close()
 }
 
