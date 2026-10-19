@@ -147,7 +147,6 @@ jobs:
 
   publish-website:
     runs-on: ubuntu-latest
-    if: github.repository == 'lysine-dev/okio' && github.ref == 'refs/heads/main'
     needs: [jvm, all-platforms, emulator]
     permissions:
       contents: write
@@ -166,7 +165,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: 3.14
+          python-version: 3.15
 
       - name: Prepare docs
         run: .buildscript/prepare_mkdocs.sh
@@ -180,7 +179,7 @@ jobs:
         run: .buildscript/restore_v1_docs.sh
 
       - name: Deploy docs
-        if: success()
+        if: github.repository == 'lysine-dev/okio' && github.ref == 'refs/heads/main'
         uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4.9.0
         with:
           branch: gh-pages
